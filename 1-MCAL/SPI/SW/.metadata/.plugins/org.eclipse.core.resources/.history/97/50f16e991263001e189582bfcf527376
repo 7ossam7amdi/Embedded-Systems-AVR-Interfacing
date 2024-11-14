@@ -1,0 +1,119 @@
+/********************************************************/
+/*	Name	: SPI_program.c								*/
+/*  Layer	: MCAL										*/
+/*	Author	: Hossam Hamdy								*/
+/* 	Date	: 4 October	2023							*/
+/*	Version	: V01										*/
+/********************************************************/
+
+#include "LIB/Std_Types.h"
+#include "LIB/Bit_Math.h"
+#include "SPI_config.h"
+#include "SPI_interface.h"
+#include "SPI_private.h"
+#include "SPI_register.h"
+
+void SPI_Init_Master (){
+
+		/*   MASTER     */
+		/* Set MOSI Pin */
+		DIO_SetPinDirection(PORT_B,PIN5,OUTPUT_PIN);
+		/* Set MISO Pin */
+		DIO_SetPinDirection(PORT_B,PIN6,INPUT_PIN);
+		/*Set CLK Pin*/
+		DIO_SetPinDirection(PORT_B,PIN7,OUTPUT_PIN);
+		/*Set CS Pin*/
+		DIO_SetPinDirection(PORT_B,PIN4,OUTPUT_PIN);
+
+
+		/*Enable SPI Master */
+
+		SET_BIT(SPCR,SPCR_MSTR); //master
+
+		/* Set CLK */
+#if CLOCK_RATE == F_DIV_4
+
+#elif	CLOCK_RATE == F_DIV_16
+
+#elif	CLOCK_RATE == F_DIV_64
+
+#elif	CLOCK_RATE == F_DIV_128
+
+#elif	CLOCK_RATE == F_DIV_2
+
+#elif	CLOCK_RATE == F_DIV_8
+
+#elif	CLOCK_RATE == F_DIV_32
+
+
+#endif
+		SET_BIT(SPCR,Pin0);
+		CLR_BIT(SPCR,Pin1);
+		CLR_BIT(SPSR,Pin0);
+
+		/* LSB Enable*/
+
+		SET_BIT(SPCR,Pin5);
+
+		/* Phase , Pol 0*/
+
+		CLR_BIT(SPCR,Pin3);
+
+		CLR_BIT(SPCR,Pin2);
+
+		/*Enable SPI*/
+
+		SET_BIT(SPCR,Pin6);
+}
+
+	//========================================
+void SPI_Init_Slave (){
+	/*    SLAVE     */
+	/* Set MOSI Pin */
+	DIO_SetPinDirection(PORT_B,PIN5,INPUT_PIN);
+	/* Set MISO Pin */
+	DIO_SetPinDirection(PORT_B,PIN6,OUTPUT_PIN);
+	/*Set CLK Pin*/
+	DIO_SetPinDirection(PORT_B,PIN7,INPUT_PIN);
+	/*Set CS Pin*/
+	DIO_SetPinDirection(PORT_B,PINaw34,INPUT_PIN);
+
+	/*Enable SPI Slave */
+
+	CLR_BIT(SPCR,SPCR_MSTR); //slave
+
+	/* LSB Enable*/
+
+	SET_BIT(SPCR,Pin5);
+
+	/* Phase , Pol 0*/
+
+	CLR_BIT(SPCR,Pin3);
+
+	CLR_BIT(SPCR,Pin2);
+
+	/*Enable SPI*/
+
+	SET_BIT(SPCR,Pin6);
+
+
+}
+
+//=================================
+
+void SPI_Transmit (uint8 data) {
+
+	SPDR = data;
+	while(!(GET_BIT(SPSR,Pin7))){
+
+	}
+}
+
+uint8 SPI_Receive (void){
+
+	/*while(!(GET_BIT(SPSR,Pin7))){
+
+		}*/
+
+	return SPDR;
+}

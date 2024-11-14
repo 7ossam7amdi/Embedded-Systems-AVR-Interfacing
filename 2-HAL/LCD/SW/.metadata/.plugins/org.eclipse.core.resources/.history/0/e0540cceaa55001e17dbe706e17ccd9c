@@ -1,0 +1,21 @@
+/*********************************************************/
+/***********		Author: Amgad Samir 	**************/
+/***********		Layer: HAL			 	**************/
+/***********		Component: CLCD 		**************/
+/***********		Version: 1.00		 	**************/
+/***********		Date: 14-8/2020		 	**************/
+/*********************************************************/
+
+
+/*Preprocessor file guard*/
+#ifndef CLCD_INTERFACE_H_
+#define CLCD_INTERFACE_H_
+
+void CLCD_voidSendCommand(uint8 Copy_Command);
+
+void CLCD_voidSendData(uint8 Copy_Data);
+
+void CLCD_voidInit(void);
+
+
+#endif

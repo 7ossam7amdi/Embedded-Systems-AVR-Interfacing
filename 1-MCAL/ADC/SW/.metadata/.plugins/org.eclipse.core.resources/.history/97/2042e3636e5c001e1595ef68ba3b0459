@@ -1,0 +1,28 @@
+/********************************************************/
+/*	Name	: ADC_interface.h							*/
+/*  Layer	: MCAL										*/
+/*	Author	: Hossam Hamdy								*/
+/* 	Date	: 25 September	2023						*/
+/*	Version	: V01										*/
+/********************************************************/
+
+#ifndef ADC_INTERFACE_H_
+#define ADC_INTERFACE_H_
+
+
+void ADC_Init (void);
+
+uint8 ADC_GetChannelReading (uint8 Copy_Channel);
+
+#define ADC0	ADC_CH0
+#define ADC1    ADC_CH1
+#define ADC2    ADC_CH2
+#define ADC3    ADC_CH3
+#define ADC4    ADC_CH4
+#define ADC5    ADC_CH5
+#define ADC6    ADC_CH6
+#define ADC7    ADC_CH7
+
+
+
+#endif

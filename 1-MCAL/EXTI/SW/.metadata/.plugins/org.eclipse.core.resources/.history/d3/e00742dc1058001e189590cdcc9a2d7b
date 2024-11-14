@@ -1,0 +1,22 @@
+/*
+ * main.c
+ *
+ *  Created on: Sep 21, 2023
+ *      Author: hossa
+ */
+
+
+#include "LIB/Std_Types.h"
+#include "DIO/DIO_interface.h"
+#include "EXTINT_interface.h"
+#include "GIE_interface.h"
+
+int main(){
+
+	GIE_Enable();
+	EXTINT_Int0Init();
+
+	while(1){
+
+	}
+}

@@ -1,0 +1,80 @@
+/********************************************************/
+/*	Name	: ADC_program.c								*/
+/*  Layer	: MCAL										*/
+/*	Author	: Hossam Hamdy								*/
+/* 	Date	: 25 September	2023						*/
+/*	Version	: V01										*/
+/********************************************************/
+
+#include "LIB/Std_Types.h"
+#include "DIO/DIO_interface.h"
+#include "LIB/Bit_Math.h"
+#include "ADC_interface.h"
+#include "ADC_config.h"
+#include "ADC_private.h"
+#include "ADC_register.h"
+
+void ADC_Init(void){
+
+	/* Select the voltage reference */
+
+#if RFERENCE_VOLT == AREF
+	CLR_BIT(ADMUX,ADMUX_REFS0);
+	CLR_BIT(ADMUX,ADMUX_REFS1);
+
+
+#elif RFERENCE_VOLT == AVCC
+	SET_BIT(ADMUX,ADMUX_REFS0);
+	CLR_BIT(ADMUX,ADMUX_REFS1);
+
+#elif RFERENCE_VOLT == INTERNAL
+	SET_BIT(ADMUX,ADMUX_REFS0);
+	SET_BIT(ADMUX,ADMUX_REFS1);
+#endif
+
+	/* Select the adjust mode */
+
+#if	ADJUST == LEFT_ADJ
+	SET_BIT(ADMUX,ADMUX_ADLAR);
+#else
+	CLR_BIT(ADMUX,ADMUX_ADLAR);
+#endif
+
+	/* Select the prescalar */
+
+	ADCSRA &= PRESCALAR_MASK;
+
+#if   ADC_PRESCALAR == PRE0
+	ADCSRA |= PRE0;
+
+#elif ADC_PRESCALAR == PRE2
+	ADCSRA |= PRE2;
+
+#elif ADC_PRESCALAR == PRE4
+	ADCSRA |= PRE4;
+
+#elif ADC_PRESCALAR == PRE8
+	ADCSRA |= PRE8;
+
+#elif ADC_PRESCALAR == PRE16
+	ADCSRA |= PRE16;
+
+#elif ADC_PRESCALAR == PRE32
+	ADCSRA |= PRE32;
+
+#elif ADC_PRESCALAR == PRE64
+	ADCSRA |= PRE64;
+
+#elif ADC_PRESCALAR == PRE128
+	ADCSRA |= PRE128;
+
+#endif
+
+	/* Enable the ADC */
+	SET_BIT(ADCSRA, ADCSRA_ADEN);
+
+}
+
+uint16 ADC_GetChannelReading (uint8 Copy_Channel){
+
+}

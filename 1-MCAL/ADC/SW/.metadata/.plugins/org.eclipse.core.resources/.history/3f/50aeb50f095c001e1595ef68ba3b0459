@@ -1,0 +1,23 @@
+/********************************************************/
+/*	Name	: ADC_program.c								*/
+/*  Layer	: MCAL										*/
+/*	Author	: Hossam Hamdy								*/
+/* 	Date	: 25 September	2023						*/
+/*	Version	: V01										*/
+/********************************************************/
+
+#include "LIB/Std_Types.h"
+#include "DIO/DIO_interface.h"
+#include "LIB/Bit_Math.h"
+#include "ADC_interface.h"
+#include "ADC_config.h"
+#include "ADC_private.h"
+#include "ADC_register.h"
+
+void ADC_Init(void){
+
+}
+
+uint16 ADC_GetChannelReading (uint8 Copy_Channel){
+
+}

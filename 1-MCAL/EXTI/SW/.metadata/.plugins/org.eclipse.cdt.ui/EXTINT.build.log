@@ -1,0 +1,38 @@
+23:04:59 **** Incremental Build of configuration Debug for project EXTINT ****
+make all 
+Building file: ../EXTINT_program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=1000000UL -MMD -MP -MF"EXTINT_program.d" -MT"EXTINT_program.o" -c -o "EXTINT_program.o" "../EXTINT_program.c"
+Finished building: ../EXTINT_program.c
+ 
+Building target: EXTINT.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,EXTINT.map -mmcu=atmega16 -o "EXTINT.elf"  ./DIO/DIO_program.o  ./EXTINT_program.o ./GIE_program.o ./main.o   
+Finished building target: EXTINT.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S EXTINT.elf  >"EXTINT.lss"
+Finished building: EXTINT.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex EXTINT.elf  "EXTINT.hex"
+Finished building: EXTINT.hex
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 EXTINT.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:    3258 bytes (19.9% Full)
+(.text + .data + .bootloader)
+
+Data:          2 bytes (0.2% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+23:04:59 Build Finished (took 491ms)
+

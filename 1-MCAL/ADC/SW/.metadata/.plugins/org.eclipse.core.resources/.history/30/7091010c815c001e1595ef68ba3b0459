@@ -1,0 +1,25 @@
+/*
+ * main.c
+ *
+ *  Created on: Sep 26, 2023
+ *      Author: hossa
+ */
+
+#include "LIB/Std_Types.h"
+#include "DIO/DIO_interface.h"
+#include "ADC_interface.h"
+#include "LCD/CLCD_interface.h"
+#include <util/delay.h>
+
+int main(){
+	CLCD_voidInit();
+	ADC_Init();
+	uint8 ADC_reading;
+	while(1){
+		ADC_reading = ADC_GetChannelReading(ADC0);
+		CLCD_voidWrite_Number(ADC_reading);
+		_delay_ms(100);
+		CLCD_voidClear();
+	}
+
+}

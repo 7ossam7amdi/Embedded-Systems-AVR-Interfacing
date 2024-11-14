@@ -1,0 +1,18 @@
+/********************************************************/
+/*	Name	: ADC_private.h								*/
+/*  Layer	: MCAL										*/
+/*	Author	: Hossam Hamdy								*/
+/* 	Date	: 25 September	2023						*/
+/*	Version	: V01										*/
+/********************************************************/
+
+#ifndef ADC_PRIVATE_H_
+#define ADC_PRIVATE_H_
+
+#define AREF		1
+#define AVCC		2
+#define INTERNAL	3
+
+#define LEFT_ADJ	1
+#define RIGHT_ADJ	2
+#endif

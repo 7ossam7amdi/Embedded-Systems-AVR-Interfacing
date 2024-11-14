@@ -1,0 +1,56 @@
+/********************************************************/
+/*	Name	: SSD_program.c  							*/
+/*  Layer	: HAL										*/
+/*	Author	: Hossam Hamdy								*/
+/* 	Date	: 19 September	2023						*/
+/*	Version	: V01										*/
+/********************************************************/
+
+#include "LIB/Std_Types.h"
+#include "DIO/DIO_interface.h"
+
+
+#include "SSD_interface.h"
+#include "SSD_config.h"
+#include "SSD_private.h"
+
+
+uint8 SSD_Enable (SSD_t* CopyP_SSDStruct){
+	uint8 Error_State = 0;
+
+	if((CopyP_SSDStruct->Type != COM_Anode) || CopyP_SSDStruct->Type != COM_Cathode){
+		if( CopyP_SSDStruct -> Type == COM_Anode ){
+
+
+		}
+	}
+	else {
+		Error_State = 1;
+	}
+
+
+
+
+
+
+	return Error_State;
+}
+
+
+uint8 SSD_Disable (uint8* CopyP_SSDStruct){
+	uint8 Error_State = 0;
+
+
+
+	return Error_State;
+
+}
+
+uint8 SSD_SetNumber (uint8 Copy_Number , uint8* CopyP_SSDStruct){
+	uint8 Error_State = 0;
+
+
+
+	return Error_State;
+
+}

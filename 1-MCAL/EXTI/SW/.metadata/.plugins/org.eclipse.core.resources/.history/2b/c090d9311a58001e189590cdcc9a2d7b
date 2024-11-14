@@ -1,0 +1,33 @@
+/*
+ * main.c
+ *
+ *  Created on: Sep 21, 2023
+ *      Author: hossa
+ */
+
+
+#include "LIB/Std_Types.h"
+#include "LIB/Bit_Math.h"
+#include "DIO/DIO_interface.h"
+#include "EXTINT_interface.h"
+#include "GIE_interface.h"
+
+
+int main(){
+	uint8 state;
+	DIO_SetPinDirection(PORT_C , PIN0 , OUTPUT_PIN);
+	GIE_Enable();
+	EXTINT_Int0Init();
+	while(1){
+		DIO_GetPinValue(PORT_D , PIN2 , &state);
+		if (state == LOW ){
+			DIO_SetPinValue(PORT_C , PIN0 , PIN_HIGH);
+		}
+	}
+}
+
+
+void _vector__1 (void) __attribute__((signal));
+void _vector__1 (void){
+	//DIO_SetPinValue(PORT_C , PIN0 , PIN_HIGH);
+}

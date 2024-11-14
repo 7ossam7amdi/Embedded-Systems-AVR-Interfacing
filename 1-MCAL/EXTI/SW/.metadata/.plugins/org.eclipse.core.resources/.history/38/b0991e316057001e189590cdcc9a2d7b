@@ -1,0 +1,35 @@
+/********************************************************/
+/*	Name	: EXTINT_program.c	   					    */
+/*  Layer	: MCAL										*/
+/*	Author	: Hossam Hamdy								*/
+/* 	Date	: 20 September	2023						*/
+/*	Version	: V01										*/
+/********************************************************/
+
+#include "LIB/Std_Types.h"
+#include "DIO/DIO_interface.h"
+#include "EXTINT_interface.h"
+#include "EXTINT_config.h"
+#include "EXTINT_private.h"
+#include "EXTINT_register.h"
+
+void EXTINT_Int0Init(void){
+
+	/* Set Sense Control of INT0 */
+
+
+	/* Enable PIE of INT0 */
+
+}
+
+/********************************************************/
+
+void EXTINT_Int1Init(void){
+
+}
+
+/********************************************************/
+
+void EXTINT_Int2Init(void){
+
+}

@@ -1,0 +1,44 @@
+/********************************************************/
+/*	Name	: ADC_program.c								*/
+/*  Layer	: MCAL										*/
+/*	Author	: Hossam Hamdy								*/
+/* 	Date	: 25 September	2023						*/
+/*	Version	: V01										*/
+/********************************************************/
+
+#include "LIB/Std_Types.h"
+#include "DIO/DIO_interface.h"
+#include "LIB/Bit_Math.h"
+#include "ADC_interface.h"
+#include "ADC_config.h"
+#include "ADC_private.h"
+#include "ADC_register.h"
+
+void ADC_Init(void){
+
+	/* Select the voltage reference */
+
+#if RFERENCE_VOLT == AREF
+	CLR_BIT(ADMUX,ADMUX_REFS0);
+	CLR_BIT(ADMUX,ADMUX_REFS1);
+
+
+	#elif RFERENCE_VOLT == AVCC
+	SET_BIT(ADMUX,ADMUX_REFS0);
+	CLR_BIT(ADMUX,ADMUX_REFS1);
+
+	#elif RFERENCE_VOLT == INTERNAL
+	SET_BIT(ADMUX,ADMUX_REFS0);
+	SET_BIT(ADMUX,ADMUX_REFS1);
+#endif
+
+#if	ADJUST == LEFT_ADJ
+	SET_BIT(ADMUX,ADMUX_ADLAR);
+#else
+	CLR_BIT(ADMUX,ADMUX_ADLAR);
+#endif
+}
+
+uint16 ADC_GetChannelReading (uint8 Copy_Channel){
+
+}

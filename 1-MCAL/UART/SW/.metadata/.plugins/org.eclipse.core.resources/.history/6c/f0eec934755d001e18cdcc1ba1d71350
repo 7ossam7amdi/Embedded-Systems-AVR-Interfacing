@@ -1,0 +1,85 @@
+/********************************************************/
+/*	Name	: UART_program.c							*/
+/*  Layer	: MCAL										*/
+/*	Author	: Hossam Hamdy								*/
+/* 	Date	: 27 September 2023							*/
+/*	Version	: V01										*/
+/********************************************************/
+
+
+#include "LIB/Std_Types.h"
+#include "LIB/Bit_Math.h"
+#include "DIO/DIO_interface.h"
+#include "UART_config.h"
+#include "UART_interface.h"
+#include "UART_private.h"
+#include "UART_register.h"
+
+
+
+
+
+void UART_Init (uint16 Baudrate){
+
+	uint8 TempUC = 0;
+	uint8 TempUH = 0;
+
+	/* Enable UBRRH by URSEL */
+	CLR_BIT(TempUH,UCSRC_URSEL);
+
+	/* Set Baudrate */
+	uint16 ubrr = (16000000UL/(16UL*Baudrate)) - 1 ;
+
+	UBRRL = (uint8) ubrr;
+	TempUH = (uint8) (ubrr >> 8);
+
+	UBRRH = TempUH;
+
+	/* Enable UCSRC by URSEL */
+	SET_BIT(TempUC,UCSRC_URSEL);
+
+	/* Choose Sync modes */
+	#if SYNC == ASYNCHRONOUS
+	CLR_BIT(TempUC,UCSRC_UMSEL);
+
+	#elif SYNC == SYNCHRONOUS
+	SET_BIT(TempUC,UCSRC_UMSEL);
+	#endif
+
+
+	/* Parity Selection  */
+
+#if PAR
+
+#endif
+
+
+	CLR_BIT(TempUC,Pin4);
+	CLR_BIT(TempUC,Pin5);
+
+
+
+
+	/* one stop bit */
+	CLR_BIT(TempUC,Pin3);
+
+	/* enable 8bit data */
+	SET_BIT(TempUC,Pin1);
+	SET_BIT(TempUC,Pin2);
+	//CLR_BIT(UCSRB,Pin2);
+
+
+	UCSRC = TempUC;
+
+	//double speed
+	SET_BIT(UCSRA,Pin1);
+
+	/* enable transmitter */
+	SET_BIT(UCSRB,Pin3);
+
+	/* enable receiver */
+	SET_BIT(UCSRB,Pin4);
+
+
+
+}

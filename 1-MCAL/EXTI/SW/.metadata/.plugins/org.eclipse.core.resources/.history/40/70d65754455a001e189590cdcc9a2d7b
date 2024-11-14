@@ -1,0 +1,34 @@
+/********************************************************/
+/*	Name	: EXTINT_config.h	   					    */
+/*  Layer	: MCAL										*/
+/*	Author	: Hossam Hamdy								*/
+/* 	Date	: 20 September	2023						*/
+/*	Version	: V01										*/
+/********************************************************/
+
+#ifndef EXTINT_CONFIG_H_
+#define EXTINT_CONFIG_H_
+
+
+/* Configure INT0 or INT1 Sense Control */
+/* Choose one of these States:
+ * - FALLING_EDGE
+ * - RISING_EDGE
+ * - ON_CHANGE
+ * - LOW_LEVEL
+*/
+
+#define INT0_SENSE	FALLING_EDGE
+
+#define INT1_SENSE	FALLING_EDGE
+
+/* Configure INT2Sense Control */
+/* Choose one of these States:
+ * - FALLING_EDGE
+ * - RISING_EDGE
+*/
+
+#define INT2_SENSE	FALLING_EDGE
+
+
+#endif

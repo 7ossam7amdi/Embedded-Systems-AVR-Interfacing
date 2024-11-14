@@ -1,0 +1,28 @@
+/********************************************************/
+/*	Name	: UART_config.h							    */
+/*  Layer	: MCAL										*/
+/*	Author	: Hossam Hamdy								*/
+/* 	Date	: 27 September	2023						*/
+/*	Version	: V01										*/
+/********************************************************/
+
+#ifndef UART_CONFIG_H_
+#define UART_CONFIG_H_
+
+/* Sync options are:
+ * SYNCHRONOUS
+ * ASYNCHRONOUS
+ *  */
+#define SYNC	ASYNCHRONOUS
+
+/* Parity options are:
+ * DISABLED
+ * EVEN
+ * ODD
+ *  */
+
+#define PARITY	DISABLED
+
+
+
+#endif

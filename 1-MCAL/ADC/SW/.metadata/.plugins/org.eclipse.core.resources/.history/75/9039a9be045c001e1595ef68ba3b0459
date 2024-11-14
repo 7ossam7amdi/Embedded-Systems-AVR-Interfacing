@@ -1,0 +1,20 @@
+/********************************************************/
+/*	Name	: ADC_config.h								*/
+/*  Layer	: MCAL										*/
+/*	Author	: Hossam Hamdy								*/
+/* 	Date	: 25 September	2023						*/
+/*	Version	: V01										*/
+/********************************************************/
+
+#ifndef ADC_CONFIG_H_
+#define ADC_CONFIG_H_
+
+
+/* OPTIONS FOR REFERNCE ARE:
+ * AREF: 	  Pin at microcontroller
+ * AVCC: 	  The source voltage of ADC
+ * INTERNAL:  Internal 2.56volts
+ *  */
+#define RFERENCE_VOLT	AVCC
+
+#endif

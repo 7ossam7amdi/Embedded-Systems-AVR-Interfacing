@@ -1,0 +1,6 @@
+
+
+
+
+#define SYNCHRONOUS		1
+#define ASYNCHRONOUS	2

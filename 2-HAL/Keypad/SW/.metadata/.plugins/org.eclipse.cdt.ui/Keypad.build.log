@@ -1,0 +1,36 @@
+16:23:02 **** Incremental Build of configuration Debug for project Keypad ****
+make all 
+Building file: ../Keypad_program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=1000000UL -MMD -MP -MF"Keypad_program.d" -MT"Keypad_program.o" -c -o "Keypad_program.o" "../Keypad_program.c"
+In file included from ../Keypad_program.c:11:
+e:/nti/tools/eclipse/sdk_win_64/sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+Finished building: ../Keypad_program.c
+ 
+Building target: Keypad.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,Keypad.map -mmcu=atmega16 -o "Keypad.elf"  ./LCD/CLCD_program.o  ./DIO/DIO_program.o  ./Keypad_program.o ./main.o   
+Finished building target: Keypad.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S Keypad.elf  >"Keypad.lss"
+Finished building: Keypad.lss
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 Keypad.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:    9796 bytes (59.8% Full)
+(.text + .data + .bootloader)
+
+Data:         24 bytes (2.3% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+16:23:02 Build Finished (took 438ms)
+

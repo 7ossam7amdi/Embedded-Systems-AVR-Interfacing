@@ -1,0 +1,16 @@
+/********************************************************/
+/*	Name	: EXTINT_interface.h	   				    */
+/*  Layer	: MCAL										*/
+/*	Author	: Hossam Hamdy								*/
+/* 	Date	: 20 September	2023						*/
+/*	Version	: V01										*/
+/********************************************************/
+
+#ifndef EXTINT_INTERFACE_H_
+#define EXTINT_INTERFACE_H_
+
+
+
+
+
+#endif

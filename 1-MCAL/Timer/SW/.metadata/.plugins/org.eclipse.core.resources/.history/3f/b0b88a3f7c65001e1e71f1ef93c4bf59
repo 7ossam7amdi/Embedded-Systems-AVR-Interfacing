@@ -1,0 +1,21 @@
+/*
+ * main.c
+ *
+ *  Created on: Sep 27, 2023
+ *      Author: hossa
+ */
+
+#include "LIB/Std_Types.h"
+#include "DIO/DIO_interface.h"
+#include "Timer_interface.h"
+
+
+int main(){
+	DIO_SetPinDirection(PORT_D, PIN5, OUTPUT_PIN);
+	Timer1_Init();
+	Servo_Go(40);
+
+	while(1){
+
+	}
+}

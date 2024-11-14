@@ -1,0 +1,78 @@
+/********************************************************/
+/*	Name	: CLCD_program.c							*/
+/*  Layer	: HAL										*/
+/*	Author	: Hossam Hamdy								*/
+/* 	Date	: 18 September	2023						*/
+/*	Version	: V01										*/
+/********************************************************/
+
+#include "LIB/Std_Types.h"
+#include <util/delay.h>
+
+#include "DIO/DIO_interface.h"
+
+#include "CLCD_config.h"
+#include "CLCD_interface.h"
+#include "CLCD_private.h"
+
+void CLCD_voidSendCommand(uint8 Copy_Command)
+{
+	/*Set RS pin to low for command*/
+	DIO_SetPinValue(CLCD_CTRL_PORT, CLCD_RS_PIN, PIN_LOW);
+
+	/*Set RW pin to low for write*/
+	DIO_SetPinValue(CLCD_CTRL_PORT,CLCD_RW_PIN,PIN_LOW);
+
+	/*Set command to data pins*/
+	DIO_SetPortValue(CLCD_DATA_PORT, Copy_Command);
+
+	/*Send enable pulse*/
+	DIO_SetPinValue(CLCD_CTRL_PORT, CLCD_EN_PIN, PIN_HIGH);
+	_delay_ms(2);
+	DIO_SetPinValue(CLCD_CTRL_PORT, CLCD_EN_PIN, PIN_LOW);
+}
+
+void CLCD_voidSendData(uint8 Copy_Data)
+{
+	/*Set RS pin to high for data*/
+	DIO_SetPinValue(CLCD_CTRL_PORT,CLCD_RS_PIN, PIN_HIGH);
+
+	/*Set RW pin to low for write*/
+	DIO_SetPinValue(CLCD_CTRL_PORT,CLCD_RW_PIN, PIN_LOW);
+
+	/*Set Data to data pins*/
+	DIO_SetPortValue(CLCD_DATA_PORT,Copy_Data);
+
+	/*Send enable pulse*/
+	DIO_SetPinValue(CLCD_CTRL_PORT,CLCD_EN_PIN, PIN_HIGH);
+	_delay_ms(2);
+	DIO_SetPinValue(CLCD_CTRL_PORT,CLCD_EN_PIN, PIN_LOW);
+}
+
+void CLCD_voidInit(void)
+{
+	/*Wait for more than 30 ms*/
+	_delay_ms(40);
+
+	/*Function set */
+	DIO_SetPinDirection(CLCD_CTRL_PORT ,CLCD_RS_PIN , OUTPUT_PIN);
+	DIO_SetPinDirection(CLCD_CTRL_PORT ,CLCD_EN_PIN , OUTPUT_PIN);
+	DIO_SetPinDirection(CLCD_DATA_PORT ,CLCD_D4_PIN , OUTPUT_PIN);
+	DIO_SetPinDirection(CLCD_DATA_PORT ,CLCD_D5_PIN , OUTPUT_PIN);
+	DIO_SetPinDirection(CLCD_DATA_PORT ,CLCD_D6_PIN , OUTPUT_PIN);
+	DIO_SetPinDirection(CLCD_DATA_PORT ,CLCD_D7_PIN , OUTPUT_PIN);
+
+	CLCD_voidSendCommand(0x33);
+	CLCD_voidSendCommand(0x32);
+	CLCD_voidSendCommand(0x28);
+	_delay_ms(1);
+	CLCD_voidSendCommand(0x0c);  //LCD display on
+	_delay_ms(1);
+	CLCD_voidSendCommand(0x02);  //LCD return home
+	_delay_ms(1);
+	CLCD_voidSendCommand(0x01);  //LCD clear
+
+
+
+
+}
